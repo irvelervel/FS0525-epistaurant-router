@@ -113,52 +113,55 @@ const Bookings = function () {
 
   console.log('SONO IN RENDER')
   return (
-    <Container>
-      <Row className="justify-content-center my-3">
-        <Col xs={12} md={6}>
-          <h2 className="text-center">PRENOTAZIONI A DB</h2>
-        </Col>
-      </Row>
-      <Row className="justify-content-center my-3">
-        <Col xs={12} md={6}>
-          {/* RENDERING CONDIZIONALE */}
+    <>
+      <title>Backoffice</title>
+      <Container>
+        <Row className="justify-content-center my-3">
+          <Col xs={12} md={6}>
+            <h2 className="text-center">PRENOTAZIONI A DB</h2>
+          </Col>
+        </Row>
+        <Row className="justify-content-center my-3">
+          <Col xs={12} md={6}>
+            {/* RENDERING CONDIZIONALE */}
 
-          {/* true && true -> true */}
-          {
-            // short circuit: utile quando dovete MOSTRARE una cosa oppure no
-            loading && (
-              <div className="text-center">
-                <Spinner animation="border" variant="success" />
-              </div>
-            )
-          }
-
-          {!loading && (
-            <>
-              {error ? (
-                <Alert variant="danger">Errore nel caricamento</Alert>
-              ) : (
-                <Alert variant="success">Caricamento completato!</Alert>
-              )}
-            </>
-          )}
-
-          <ListGroup>
+            {/* true && true -> true */}
             {
-              // qui farò un map dell'array delle prenotazioni e per
-              // ogni elemento ritornerò un ListGroup.Item
-              prenotazioni.map((booking) => {
-                return (
-                  <ListGroup.Item key={booking._id}>
-                    {booking.name} per {booking.numberOfPeople}
-                  </ListGroup.Item>
-                )
-              })
+              // short circuit: utile quando dovete MOSTRARE una cosa oppure no
+              loading && (
+                <div className="text-center">
+                  <Spinner animation="border" variant="success" />
+                </div>
+              )
             }
-          </ListGroup>
-        </Col>
-      </Row>
-    </Container>
+
+            {!loading && (
+              <>
+                {error ? (
+                  <Alert variant="danger">Errore nel caricamento</Alert>
+                ) : (
+                  <Alert variant="success">Caricamento completato!</Alert>
+                )}
+              </>
+            )}
+
+            <ListGroup>
+              {
+                // qui farò un map dell'array delle prenotazioni e per
+                // ogni elemento ritornerò un ListGroup.Item
+                prenotazioni.map((booking) => {
+                  return (
+                    <ListGroup.Item key={booking._id}>
+                      {booking.name} per {booking.numberOfPeople}
+                    </ListGroup.Item>
+                  )
+                })
+              }
+            </ListGroup>
+          </Col>
+        </Row>
+      </Container>
+    </>
   )
 }
 
