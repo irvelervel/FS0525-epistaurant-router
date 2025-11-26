@@ -26,7 +26,9 @@ const RestaurantNavbar = () => {
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" data-bs-theme="dark">
       <Container fluid={true}>
-        <Navbar.Brand href="#home">Epistaurant</Navbar.Brand>
+        <Link to="/" className="navbar-brand">
+          Epistaurant
+        </Link>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">

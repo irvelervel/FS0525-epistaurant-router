@@ -12,6 +12,7 @@ import Bookings from './components/Bookings'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import NotFound from './components/NotFound'
 import Menu from './components/Menu'
+import PastaDetails from './components/PastaDetails'
 
 // questa riga fa in modo che il foglio css di bootstrap venga aggiunto a App
 // e di conseguenza a tutti i componenti React
@@ -61,6 +62,9 @@ function App() {
 
         {/* Inseriremo qui il nostro componente del menu */}
         <Route path="/menu" element={<Menu />} />
+
+        {/* Inseriremo qui il nostro componente dettagli */}
+        <Route path="/details/:pastaID" element={<PastaDetails />} />
 
         {/* Inseriamo qui un componente NotFound che dovròà venire mostrato
         ogni volta che uno dei percorsi prefissati NON venga colpito */}
