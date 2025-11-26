@@ -5,6 +5,7 @@
 
 import { useState } from 'react'
 import { Col, Container, Row, Form, Button } from 'react-bootstrap'
+import { useNavigate } from 'react-router-dom'
 
 // ogni volta che dovete fare un form lo dovete modellare intorno al DATO
 // che dovete inviare alle API
@@ -48,6 +49,8 @@ const BookATable = function () {
     specialRequests: '',
   })
 
+  const navigate = useNavigate() // <-- ottengo la funzione navigate
+
   const sendBooking = () => {
     console.log('invio i dati alle API', booking)
     const URL = 'https://striveschool-api.herokuapp.com/api/reservation'
@@ -80,6 +83,8 @@ const BookATable = function () {
             dateTime: '',
             specialRequests: '',
           })
+          // riportiamo l'utente in homepage con la funzione "navigate"
+          navigate('/')
         } else {
           throw new Error('errore nella response', r.status)
         }
@@ -185,7 +190,10 @@ const BookATable = function () {
                 <option>3</option>
                 <option>4</option>
                 <option>5</option>
-                <option>6+</option>
+                {/* mettendo in una option una proprietà "value" voi
+                riuscite a differenziare "quello che l'utente vede" da
+                "il valore che viene prelevato dalla option" */}
+                <option value={10}>6+</option>
               </Form.Select>
             </Form.Group>
 

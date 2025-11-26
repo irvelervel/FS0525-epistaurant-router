@@ -10,6 +10,7 @@ import Home from './components/Home'
 import BookATable from './components/BookATable'
 import Bookings from './components/Bookings'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import NotFound from './components/NotFound'
 
 // questa riga fa in modo che il foglio css di bootstrap venga aggiunto a App
 // e di conseguenza a tutti i componenti React
@@ -52,10 +53,13 @@ function App() {
         {/* la rotta principale, es. localhost:5173, www.giangiorgio.com */}
 
         {/* Inseriamo qui il nostro componente di "backoffice" */}
-        <Route path="/backoffice" element={<Bookings />} />
+        <Route path="/admin" element={<Bookings />} />
 
         {/* Inseriremo qui il nostro form di prenotazione */}
         <Route path="/prenota" element={<BookATable />} />
+        {/* Inseriamo qui un componente NotFound che dovròà venire mostrato
+        ogni volta che uno dei percorsi prefissati NON venga colpito */}
+        <Route path="/*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   )
